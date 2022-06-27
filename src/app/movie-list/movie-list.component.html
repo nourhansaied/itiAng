@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="col-md-4" *ngFor="let movie of movieList">
+    <app-movie-card [movieData]="movie"  (movieID)="test($event)"></app-movie-card>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="item" (click)="navigateToDetails()">
+  <img [src]="baseURL+movieData.poster_path" class="w-100" alt="">
+  <h2>{{movieData.title}}</h2>
+  <p>{{movieData.overview}}</p>
+  <p>{{movieData.release_date | date:'mediumDate'}}</p>
+  <button class="btn btn-primary" (click)="addCart(movieData.id)">Okay</button>
+</div>
+<!-- http://localhost:4200/movieDetails/615469 -->
+<!-- http://localhost:4200/movieDetails/746419 -->
+<!-- [routerLink]="'/movieDetails/'+movieData.id" -->
+<!-- http://localhost:4200/movieDetails/615469/Spiderhead -->

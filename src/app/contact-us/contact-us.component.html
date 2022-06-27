@@ -1,0 +1,120 @@
+
+
+<div class="w-50 mx-auto my-5">
+<!-- name ... age ... email -->
+  <h2>Contact us</h2>
+
+  <!-- <form #contactUs="ngForm" (ngSubmit)="sendValue(contactUs)">
+    <label for="userName">userName</label>
+
+    <input type="text" id="userName" class="form-control"
+    name="name"
+    #name="ngModel"
+    [(ngModel)]="formData.name"
+    required
+    minlength="3"
+    maxlength="10"
+    >
+    <div class="text-danger" *ngIf="!name.valid && name.touched">
+      <p *ngIf="name.errors?.['required']">this field is required</p>
+      <p *ngIf="name.errors?.['minlength']">minlength is 3</p>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <label for="age">Age</label>
+    <input type="number" id="age" class="form-control"
+    name="uAge"
+    #uAge="ngModel"
+    ngModel
+
+    required
+    min="16"
+    max="30"
+    >
+
+    <div *ngIf="showError || (!uAge.valid && uAge.touched)">
+        <p *ngIf="uAge.errors?.['required']">this field is required</p>
+        <p *ngIf="uAge.errors?.['min']">min is 16</p>
+        <p *ngIf="uAge.errors?.['max']">max is 30</p>
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <button type="submit" class="btn btn-primary d-block ms-auto" [disabled]="!contactUs.valid">CLICK NOW</button>
+  </form> -->
+
+
+
+  <form [formGroup]="contactUs" (ngSubmit)="submitReactiveForm()">
+    <label for="userName">userName</label>
+    <input type="text" class="form-control"
+    id="userName"
+    name="userName"
+    formControlName="userName"
+    >
+
+    <div *ngIf="!controlValidation['userName'].valid && controlValidation['userName'].touched">
+        <p class="text-danger" *ngIf="controlValidation['userName'].errors?.['required']">Required</p>
+    <p *ngIf="controlValidation['userName'].errors?.['minlength']">minLength</p>
+      </div>
+
+
+      <label for="uAge">uAge</label>
+      <input type="number" id="uAge"
+      class="form-control"
+      name="uAge"
+      formControlName="uAge"
+      >
+    <div *ngIf="!controlValidation['uAge'].valid && controlValidation['uAge'].touched">
+      <p class="text-danger" *ngIf="controlValidation['uAge'].errors?.['required']">Required</p>
+      <p class="text-danger" *ngIf="controlValidation['uAge'].errors?.['min']">minLength</p>
+      <p class="text-danger" *ngIf="controlValidation['uAge'].errors?.['max']">max</p>
+
+    </div>
+
+
+
+
+    <label for="password">password</label>
+    <input type="password" id="password" class="form-control" name="password" formControlName="password">
+    <div *ngIf="!controlValidation['password'].valid && controlValidation['password'].touched">
+      <p class="text-danger" *ngIf="controlValidation['password'].errors?.['required']">Required</p>
+      <p class="text-danger" *ngIf="controlValidation['password'].errors?.['pattern']">pattern</p>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <button [disabled]="!contactUs.valid" type="submit" class="btn btn-info mt-5">CLICK ME</button>
+  </form>
+
+
+</div>
